@@ -20,7 +20,7 @@
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
-                        <th>IMAGE</th>
+                        <th></th>
                         <th>BRAND</th>
                         <th>DESCRIPTION</th>
                         <th>QTY</th>
@@ -34,7 +34,7 @@
                             <td><a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>"><?= $product['product_name'] ?></a></td>
                             <td><img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>" width="50px;" alt=""></td>
                             <td><?= $product['product_brand'] ?></td>
-                            <td><?= $product['product_description'] ?></td>
+                            <td><?= word_limiter($product['product_description'], 10) ?></td>
                             <td><?= $product['product_qty'] ?></td>
                             <td>
                                 <center>
