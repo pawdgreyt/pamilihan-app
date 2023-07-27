@@ -4,20 +4,24 @@
             $this->load->database();
         }
 
-        public function get_products($limit = FALSE, $offset = FALSE){
+        public function get_products($id = FALSE, $limit = FALSE, $offset = FALSE){
             if ($limit) {
                 $this->db->limit($limit, $offset);
             }
             
-            $this->db->select('products.*','products_categories.category',FALSE);
-            $this->db->order_by('products.id', 'DESC');
-            $this->db->join('product_categories', 'product_categories.id = products.product_category');
-            $query = $this->db->get('products');
+            if ($id === FALSE) {
+                $this->db->select('products.*','products_categories.category',FALSE);
+                $this->db->order_by('products.id', 'DESC');
+                $this->db->join('product_categories', 'product_categories.id = products.product_category');
+                $query = $this->db->get('products');
+                return $query->result_array();
+            }
 
-            return $query->result_array();
+            $query = $this->db->get_where('products', array('id' => $id));
+            return $query->row_array();
         }
 
-        public function create_product($post_image){
+        public function create_product($product_image){
 
             $data = array(
                 'product_name' => $this->input->post('product_name'),
@@ -26,12 +30,28 @@
                 'product_price' => $this->input->post('product_price'),
                 'product_qty' => $this->input->post('product_qty'),
                 'product_category' => $this->input->post('product_category'),
-                'product_image' => $post_image,
+                'product_image' => $product_image,
                 'product_status' => "Active",
                 'date_added' => date('Y-m-d H:i:s'),
             );
 
             return $this->db->insert('products', $data);
+        }
+
+        public function update_product($product_image){
+            $data = array(
+                'product_name' => $this->input->post('product_name'),
+                'product_description' => $this->input->post('product_description'),
+                'product_brand' => $this->input->post('product_brand'),
+                'product_price' => $this->input->post('product_price'),
+                'product_qty' => $this->input->post('product_qty'),
+                'product_category' => $this->input->post('product_category'),
+                'product_image' => $product_image,
+                'product_status' => $this->input->post('product_status'),
+            );
+
+            $this->db->where('id', $this->input->post('id'));
+            return $this->db->update('products', $data);
         }
 
         public function check_product_name_exists($product){
@@ -43,6 +63,7 @@
                 return false;
             }
         }
+        
     }
 
 ?>

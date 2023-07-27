@@ -17,7 +17,7 @@
 
             $data['title'] = "Products";
 
-            $data['products'] = $this->product_model->get_products($config['per_page'], $offset);
+            $data['products'] = $this->product_model->get_products(FALSE, $config['per_page'], $offset);
 
             $this->load->view('templates/header');
             $this->load->view('products/index', $data);
@@ -41,7 +41,7 @@
 
             $data['title'] = "Manage Products";
 
-            $data['products'] = $this->product_model->get_products($config['per_page'], $offset);
+            $data['products'] = $this->product_model->get_products(FALSE,$config['per_page'], $offset);
 
             $this->load->view('templates/header');
             $this->load->view('products/manage', $data);
@@ -82,14 +82,14 @@
 
                 if (!$this->upload->do_upload('userfile')) {
                     $errors = array('error' => $this->upload->display_errors());
-                    $post_image = 'noimage.png';
+                    $product_image = 'noimage.png';
                 } else {
                     // Load the image library
                     $this->load->library('image_lib');
 
                     // Get the uploaded image data
                     $uploadData = $this->upload->data();
-                    $post_image = $uploadData['file_name'];
+                    $product_image = $uploadData['file_name'];
 
                     // Configuration for image manipulation
                     $resizeConfig['image_library'] = 'gd2';
@@ -103,20 +103,99 @@
                     if (!$this->image_lib->resize()) {
                         // Handle resizing errors if any
                         $errors = array('error' => $this->image_lib->display_errors());
-                        $post_image = 'noimage.png';
+                        $product_image = 'noimage.png';
                     }
 
                     // Clear the library configuration
                     $this->image_lib->clear();
                 }
 
-                $this->product_model->create_product($post_image);
+                $this->product_model->create_product($product_image);
 
                 // Set message
                 $this->session->set_flashdata('product_created', 'Product Created!');
 
                 redirect('products/manage');
             }
+        }
+
+        public function edit($id){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            $data['product'] = $this->product_model->get_products($id);
+
+            // set title
+            $data['title'] = 'Update Product';
+
+            // get product categories
+            $data['product_categories'] = $this->category_model->get_categories();
+
+            if (empty($data['product'])) {
+                show_404();
+            }
+
+            $data['title'] = 'Edit Post';
+
+            $this->load->view('templates/header');
+            $this->load->view('products/edit', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function update(){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+
+            // Upload image
+            $config['upload_path'] = './assets/images/products';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2048';
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('userfile')) {
+                $errors = array('error' => $this->upload->display_errors());
+                $product_image = $this->input->post('old_image');
+            } else {
+                // delete old image
+                unlink(FCPATH . "assets/images/products/" . $this->input->post('old_image')); 
+                // Load the image library
+                $this->load->library('image_lib');
+
+                // Get the uploaded image data
+                $uploadData = $this->upload->data();
+                $product_image = $uploadData['file_name'];
+
+                // Configuration for image manipulation
+                $resizeConfig['image_library'] = 'gd2';
+                $resizeConfig['source_image'] = $uploadData['full_path'];
+                $resizeConfig['maintain_ratio'] = FALSE;
+                $resizeConfig['width'] = 400;
+                $resizeConfig['height'] = 400;
+
+                $this->image_lib->initialize($resizeConfig);
+
+                if (!$this->image_lib->resize()) {
+                    // Handle resizing errors if any
+                    $errors = array('error' => $this->image_lib->display_errors());
+                    $product_image = 'noimage.png';
+                }
+
+                // Clear the library configuration
+                $this->image_lib->clear();
+            }
+
+
+            $this->product_model->update_product($product_image);
+
+            // Set message
+            $this->session->set_flashdata('product_updated', 'Product Updated!');
+
+            redirect('products/manage');
         }
 
         public function check_product_name_exists($product_name){
