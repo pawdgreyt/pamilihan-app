@@ -11,7 +11,7 @@
         <div class="text-center container">
             <h4 class="mt-4"></h4>
             <div class="row">
-                <div class="col-lg-4 col-md-12 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
                             <div class="image-container">
@@ -40,7 +40,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
                             <div class="image-container">
@@ -69,7 +69,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
                             <div class="image-container">
