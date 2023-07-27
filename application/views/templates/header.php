@@ -38,13 +38,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="dropdowntoggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                            
                             <?php if($this->session->userdata('logged_in')) : ?>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage">Manage Products</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login">Login</a></li>
                             <?php endif; ?>
-
                         </ul>
                     </li>
                 </ul>

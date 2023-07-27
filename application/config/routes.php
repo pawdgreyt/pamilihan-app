@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['products'] = 'products/index';
+$route['products/index'] = 'products/index';
+$route['products/manage'] = 'products/manage';
 $route['products/create'] = 'products/create';
 $route['products/update'] = 'products/update';
 $route['products/(:any)'] = 'products/view/$1';
+$route['products'] = 'products/index';
 
 $route['categories'] = 'categories/index';
 $route['categories/create'] = 'categories/create';

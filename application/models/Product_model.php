@@ -4,10 +4,16 @@
             $this->load->database();
         }
 
-        public function get_products(){
-            $this->db->order_by('id');
+        public function get_products($limit = FALSE, $offset = FALSE){
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
             
+            $this->db->select('products.*','products_categories.category',FALSE);
+            $this->db->order_by('products.id', 'DESC');
+            $this->db->join('product_categories', 'product_categories.id = products.product_category');
             $query = $this->db->get('products');
+
             return $query->result_array();
         }
 
