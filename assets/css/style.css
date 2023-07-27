@@ -67,3 +67,183 @@ a.pagination-links {
 .navbar-brand:focus {
 	background-color: white !important;
 }
+
+.hover-zoom {
+	transition: transform 0.3s;
+}
+
+/* Custom ripple effect for "ripple-surface" */
+.ripple-surface {
+	position: relative;
+	overflow: hidden;
+}
+
+.ripple-surface::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	transform: translate(-50%, -50%) scale(0);
+	border-radius: 50%;
+	pointer-events: none;
+	transition: transform 0.3s;
+}
+
+.ripple-surface:hover::after {
+	transform: translate(-50%, -50%) scale(2);
+}
+
+/* Custom ripple effect for "ripple-surface-light" */
+.ripple-surface-light {
+	position: relative;
+	overflow: hidden;
+}
+
+.ripple-surface-light::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.178);
+	transform: translate(-50%, -50%) scale(0);
+	border-radius: 50%;
+	pointer-events: none;
+	transition: transform 0.3s;
+}
+
+.ripple-surface-light:hover::after {
+	transform: translate(-50%, -50%) scale(2);
+}
+
+.card {
+	position: relative;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+}
+
+/* Styling for the card header */
+.card-header {
+	padding: 0.75rem 1.25rem;
+	background-color: #f7f7f7;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-top-left-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+}
+
+/* Styling for the card body */
+.card-body {
+	padding: 1rem;
+}
+
+/* Styling for the card title */
+.card-title {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+/* Styling for the card text content */
+.card-text {
+	font-size: 1rem;
+}
+
+/* Styling for the card footer */
+.card-footer {
+	padding: 0.75rem 1.25rem;
+	background-color: #f7f7f7;
+	border-top: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom-left-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+
+.image-container {
+	position: relative;
+	display: inline-block;
+}
+
+/* Styling for the overlay */
+.hover-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(
+		0,
+		0,
+		0,
+		0.5
+	); /* Adjust the opacity and color to your preference */
+	opacity: 0; /* The overlay is initially hidden */
+	transition: opacity 0.3s ease;
+}
+
+/* Show the overlay on hover */
+.image-container:hover .hover-overlay {
+	opacity: 1;
+}
+
+/* Text content on the overlay */
+.overlay-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+.mask {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-attachment: fixed;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.bg-image {
+	position: relative;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
+
+.card .bg-image {
+	border-top-left-radius: var(--mdb-card-border-radius);
+	border-top-right-radius: var(--mdb-card-border-radius);
+}
+
+.mb-4 {
+	margin-bottom: 1.5rem !important;
+}
+
+.container {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+#imageviewer:hover {
+	cursor: pointer !important;
+}

@@ -10,7 +10,6 @@
     <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/cart.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
-    
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -27,7 +26,7 @@
             <div class="collapse navbar-collapse" id="CollapseNavBar">
                 <ul class="nav navbar-nav">
                     <?php if($this->session->userdata('logged_in')) : ?>
-                        <li><a href="<?php echo base_url(); ?>">Products</a></li>
+                        <li><a href="<?php echo base_url(); ?>products">Products</a></li>
                         <li><a href="<?php echo base_url(); ?>categories">Categories</a></li>
                     <?php endif; ?>
                 </ul>
@@ -69,4 +68,12 @@
 
         <?php if($this->session->flashdata('category_created')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('product_created')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('product_created').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('check_product_name_exists')): ?>
+            <?php echo '<p class="alert alert-error">'.$this->session->flashdata('check_product_name_exists').'</p>' ?>
         <?php endif;?>
