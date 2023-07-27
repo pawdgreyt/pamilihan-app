@@ -48,6 +48,25 @@
             $this->load->view('templates/footer');
         }
 
+        public function view($id = NULL){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            $data['product'] = $this->product_model->get_products($id);
+
+            if (empty($data['product'])) {
+                show_404();
+            }
+
+            $data['title'] = "VIEW PRODUCT";
+
+            $this->load->view('templates/header');
+            $this->load->view('products/view', $data);
+            $this->load->view('templates/footer');
+        }
+
         public function create(){
             // check login
             if(!$this->session->userdata('logged_in')){
@@ -129,6 +148,14 @@
 
             // set title
             $data['title'] = 'Update Product';
+
+            // set form validation
+            $this->form_validation->set_rules('product_name', 'Product Name', 'required|callback_check_product_name_exists');
+            $this->form_validation->set_rules('product_description', 'Product Description', 'required');
+            $this->form_validation->set_rules('product_brand', 'Product Brand', 'required');
+            $this->form_validation->set_rules('product_price', 'Product Price', 'required');
+            $this->form_validation->set_rules('product_qty', 'Product Qty', 'required');
+            $this->form_validation->set_rules('product_category', 'Product Category', 'required');
 
             // get product categories
             $data['product_categories'] = $this->category_model->get_categories();

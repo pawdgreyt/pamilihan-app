@@ -1,6 +1,12 @@
 <div class="row">
     <h2><?= $title?></h2>
 
+    <!-- <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Product">
+        </div>
+    </form> -->
+
     <a href="<?php echo base_url(); ?>products/create" class="btn btn-sm btn-primary" style="float:right;">
         <i class="fa fa-plus"></i> Create Product
     </a>
@@ -25,7 +31,7 @@
                     <?php foreach($products as $product) : ?>
                         <tr>
                             <td><?= $product['id'] ?></td>
-                            <td><?= $product['product_name'] ?></td>
+                            <td><a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>"><?= $product['product_name'] ?></a></td>
                             <td><img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>" width="50px;" alt=""></td>
                             <td><?= $product['product_brand'] ?></td>
                             <td><?= $product['product_description'] ?></td>

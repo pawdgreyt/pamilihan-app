@@ -9,7 +9,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/cart.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="http://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse">

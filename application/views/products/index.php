@@ -14,13 +14,13 @@
                                     <img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>"
                                 class="w-100" />
                                 </div>
-                            <a href="#!">
+                            <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>">
                                 <div class="hover-overlay">
                                 </div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <a href="" class="text-reset">
+                            <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>" class="text-reset">
                             <h5 class="card-title mb-3"><?= $product['product_name']?></h5>
                             </a>
                             <a href="" class="text-reset">

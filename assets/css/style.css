@@ -237,3 +237,65 @@ a.pagination-links {
 #imageviewer:hover {
 	cursor: pointer !important;
 }
+
+.mb-1 {
+	margin-bottom: 0.25rem !important;
+}
+
+.small {
+	font-size: 0.875em;
+}
+
+.align-items-center {
+	align-items: center !important;
+}
+
+.fw-bolder {
+	font-weight: bolder !important;
+}
+
+@media (min-width: 1200px) {
+	.display-5 {
+		font-size: 3rem;
+	}
+}
+
+.text-decoration-line-through {
+	text-decoration: line-through !important;
+}
+
+.lead {
+	font-size: 1.125rem;
+	font-weight: 300;
+	text-align: justify;
+}
+
+@media (min-width: 1100px) {
+	.lead {
+		font-size: 18px;
+	}
+}
+
+.d-flex {
+	display: flex !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.me-3 {
+	margin-right: 1rem !important;
+}
+
+.flex-shrink-0 {
+	flex-shrink: 0 !important;
+}
+
+.fs-5 {
+	font-size: 1.5rem !important;
+}
+
+.mb-5 {
+	margin-bottom: 3rem !important;
+}

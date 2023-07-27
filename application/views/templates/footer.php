@@ -1,6 +1,5 @@
 </div>
         <script>
-            // CKEDITOR.replace('editor1');
             const liElement = document.querySelector('.nav-item.dropdown');
             const toggle = document.getElementById('CollapseNavBarToggle');
             const navbar = document.getElementById('CollapseNavBar');
