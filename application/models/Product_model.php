@@ -55,7 +55,7 @@
                 'product_description' => $this->input->post('product_description'),
                 'product_brand' => $this->input->post('product_brand'),
                 'product_price' => $this->input->post('product_price'),
-                'product_qty' => $this->input->post('product_qty'),
+                // 'product_qty' => $this->input->post('product_qty'),
                 'product_category' => $this->input->post('product_category'),
                 'product_image' => $product_image,
                 'product_status' => $this->input->post('product_status'),

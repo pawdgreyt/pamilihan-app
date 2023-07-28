@@ -37,7 +37,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="title">Quantity <strong style="color:red">*</strong></label>
-                <input type="number" min="1" step="1" class="form-control"  name="product_qty" placeholder="10 pcs" value="<?= $product['product_qty'] ?>" required autocomplete="off">
+                <input type="number" min="1" step="1" class="form-control"  name="product_qty" placeholder="10 pcs" value="<?= $product['product_qty'] ?>" required autocomplete="off" readonly>
             </div>
         </div>
     </div>
