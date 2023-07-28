@@ -203,6 +203,7 @@
                 $resizeConfig['maintain_ratio'] = FALSE;
                 $resizeConfig['width'] = 400;
                 $resizeConfig['height'] = 400;
+                $resizeConfig['test'] = 400;
 
                 $this->image_lib->initialize($resizeConfig);
 
