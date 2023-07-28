@@ -10,6 +10,6 @@
         <label>Name</label>
         <input type="text" class="form-control" name="category" placeholder="Enter Category"> 
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
 </form>
 </div>

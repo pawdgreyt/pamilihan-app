@@ -8,41 +8,47 @@
     </span>
 </div>
 
-<div class="row">
+<div class="col-lg-12">
     <?php echo form_open_multipart('products/create'); ?>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="title">Product Name <strong style="color:red">*</strong></label>
-            <input type="text" class="form-control" name="product_name" placeholder="Product Name" required autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="title">Product Name <strong style="color:red">*</strong></label>
+                <input type="text" class="form-control" name="product_name" placeholder="Product Name" required autocomplete="off">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="title">Brand Name <strong style="color:red">*</strong></label>
+                <input type="text" class="form-control" name="product_brand" placeholder="Brand Name" required autocomplete="off">
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="title">Brand Name <strong style="color:red">*</strong></label>
-            <input type="text" class="form-control" name="product_brand" placeholder="Brand Name" required autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="title">Price <strong style="color:red">*</strong></label>
+                <input type="number" name="product_price" class="form-control" min="1" step="0.1" placeholder="P 10,000" required autocomplete="off">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="title">Quantity <strong style="color:red">*</strong></label>
+                <input type="number" min="1" step="1" class="form-control"  name="product_qty" placeholder="10 pcs" required autocomplete="off">
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="title">Price <strong style="color:red">*</strong></label>
-            <input type="number" name="product_price" class="form-control" min="1" step="0.1" placeholder="P 10,000" required autocomplete="off">
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="title">Quantity <strong style="color:red">*</strong></label>
-            <input type="number" min="1" step="1" class="form-control"  name="product_qty" placeholder="10 pcs" required autocomplete="off">
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Category <strong style="color:red">*</strong></label>
-            <select name="product_category" class="form-control"  required autocomplete="off">
-                <option value="" selected disabled>Select Category</option>
-                <?php foreach($product_categories as $category) : ?>
-                <option value="<?= $category['id']?>"><?= $category['category']?></option>
-                <?php endforeach ?>
-            </select>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Category <strong style="color:red">*</strong></label>
+                <select name="product_category" class="form-control"  required autocomplete="off">
+                    <option value="" selected disabled>Select Category</option>
+                    <?php foreach($product_categories as $category) : ?>
+                    <option value="<?= $category['id']?>"><?= $category['category']?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </div>
     </div>
     <div class="col-md-3">
@@ -63,7 +69,7 @@
         </div>
     </div>
     <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
     </div>
     </form>
 </div>

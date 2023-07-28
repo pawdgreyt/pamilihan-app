@@ -1,3 +1,4 @@
+<br>
 <div class="row">
     <h2><?= $title?></h2>
 </div>
@@ -9,25 +10,21 @@
                 <?php foreach ($products as $product) : ?>
                     <div class="col-lg-3 col-md-4 mb-4">
                         <div class="card">
-                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
-                                <div class="image-container">
-                                    <img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>"
-                                class="w-100" />
-                                </div>
                             <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>">
-                                <div class="hover-overlay">
+                                <div class="bg-image">
+                                    <div class="image-container">
+                                        <img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>" class="w-100" />
+                                    </div>
+                                    <div class="hover-overlay"></div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>" class="text-reset">
-                            <h5 class="card-title mb-3"><?= $product['product_name']?></h5>
-                            </a>
-                            <a href="" class="text-reset">
-                            <p><?= $product['product_brand']?></p>
-                            </a>
-                            <h6 class="mb-3">Php <?= number_format($product['product_price'], 2)?></h6>
-                        </div>
+                            <div class="card-body">
+                                <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>" class="text-reset" style="text-decoration:none;">
+                                    <h5 class="card-title mb-3"><?= $product['product_name']?></h5>
+                                </a>
+                                <p><?= $product['product_brand']?></p>
+                                <h6 class="mb-3">Php <?= number_format($product['product_price'], 2)?></h6>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
