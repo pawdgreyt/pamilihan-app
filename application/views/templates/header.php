@@ -72,6 +72,10 @@
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('product_created').'</p>' ?>
         <?php endif;?>
 
+        <?php if($this->session->flashdata('product_updated')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('product_updated').'</p>' ?>
+        <?php endif;?>
+
         <?php if($this->session->flashdata('check_product_name_exists')): ?>
             <?php echo '<p class="alert alert-error">'.$this->session->flashdata('check_product_name_exists').'</p>' ?>
         <?php endif;?>

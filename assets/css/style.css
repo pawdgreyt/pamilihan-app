@@ -133,7 +133,7 @@ a.pagination-links {
 	background-clip: border-box;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
-	box-shadow: 4px 4px 9px 0px;
+	box-shadow: 1px 3px 10px 0px;
 }
 
 /* Styling for the card header */
