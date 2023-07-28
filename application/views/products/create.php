@@ -59,7 +59,7 @@
     </div>
     <div class="col-md-3">
             <label for="">Image Viewer</label><br>
-            <img id="imageviewer" src="#" style="max-width:200px;max-height:200px;border: .5px solid #eb6864" onclick="window.open(imageviewer.src, '_blank');"/>
+            <img id="imageviewer" src="#" style="max-width:200px;max-height:200px;border: .5px solid black" onclick="window.open(imageviewer.src, '_blank');"/>
         </div>
     </div>
     <div class="col-md-12">
