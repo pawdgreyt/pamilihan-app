@@ -3810,6 +3810,10 @@ fieldset:disabled .btn {
 	background-color: var(--bs-nav-tabs-link-active-bg);
 	border-color: var(--bs-nav-tabs-link-active-border-color);
 }
+
+.nav-link.active {
+	font-weight: 600;
+}
 .nav-tabs .dropdown-menu {
 	margin-top: calc(-1 * var(--bs-nav-tabs-border-width));
 	border-top-left-radius: 0;
@@ -11161,24 +11165,44 @@ fieldset:disabled .btn {
 	}
 }
 
+/* Styling for the container of pagination links */
 .pagination-links {
 	margin: 30px 0;
 }
 
-a.pagination-links {
+/* Styling for individual pagination links */
+.pagination-links a {
 	padding: 8px 13px;
 	margin: 5px;
 	background: #f4f4f4;
-	border: 1px #ccc solid;
+	border: 1px #343a40 solid; /* Use the dark gray border color */
+	text-decoration: none;
+	color: #343a40; /* Use the dark gray text color */
+	transition: all 0.3s ease; /* Add a smooth transition effect */
 }
 
+/* Styling for the currently active page link */
 .pagination-links strong {
 	padding: 8px 13px;
 	margin: 5px;
-	background: #f4f4f4;
-	border: 1px #ccc solid;
+	background: #343a40; /* Use the dark gray background color */
+	border: 1px #343a40 solid; /* Use the dark gray border color */
+	color: #fff; /* Text color for the active link */
+	transition: all 0.3s ease; /* Add a smooth transition effect */
 }
 
+/* Hover effect for pagination links */
+.pagination-links a:hover {
+	background: #343a40; /* Use the dark gray background color on hover */
+	color: #fff; /* Text color for the active link on hover */
+}
+
+/* Hover effect for active page link */
+.pagination-links strong:hover {
+	background: #1a1a1a; /* Use a slightly darker shade of gray on hover */
+	border: 1px #1a1a1a solid; /* Use the darker border color on hover */
+	color: #fff; /* Text color for the active link on hover */
+}
 .bg-image {
 	position: relative;
 	overflow: hidden;
@@ -11213,7 +11237,7 @@ a.pagination-links {
 	opacity: 1; /* Show the overlay on hover */
 }
 
-.container{
+.container {
 	padding-left: 47px !important;
-    padding-right: 47px !important;
+	padding-right: 47px !important;
 }

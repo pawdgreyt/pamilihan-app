@@ -21,6 +21,17 @@
             return $query->row_array();
         }
 
+        public function get_similar_products($product_category, $view_product_id) {
+            $this->db->order_by('id', 'DESC');
+            $this->db->limit(4); // limit the similar products to 4
+        
+            // Create a proper condition array for the where clause
+            $this->db->where(array('product_category' => $product_category, 'id !=' => $view_product_id));
+        
+            $query = $this->db->get('products');
+            return $query->result_array();
+        }
+
         public function create_product($product_image){
 
             $data = array(

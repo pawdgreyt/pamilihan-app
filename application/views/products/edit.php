@@ -1,3 +1,4 @@
+<br>
 <div class="row">
     <h2>Update: <?= $product['product_name']; ?></h2>
 
@@ -71,7 +72,7 @@
         </div>
     </div>
     <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
     </div>
     </form>
 </div>

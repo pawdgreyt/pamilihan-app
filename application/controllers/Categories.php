@@ -7,9 +7,12 @@
             }
 
             $data['title'] = 'Categories';
+            $url['url'] = base_url() . 'categories';
 
             $data['categories'] = $this->category_model->get_categories();
-            $this->load->view('templates/header');
+
+            
+            $this->load->view('templates/header', $url);
             $this->load->view('categories/index', $data);
             $this->load->view('templates/footer');
         }
@@ -21,11 +24,12 @@
             }
 
             $data['title'] = 'Create Category';
+            $url['url'] = '';
 
             $this->form_validation->set_rules('category', 'Category', 'required');
             
             if ($this->form_validation->run() === FALSE) {
-                $this->load->view('templates/header');
+                $this->load->view('templates/header', $url);
                 $this->load->view('categories/create', $data);
                 $this->load->view('templates/footer');
             } else {

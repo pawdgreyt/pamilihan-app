@@ -4,9 +4,12 @@
             $this->load->database();
         }
 
-        public function get_categories(){
-            $this->db->order_by('category');
-            $query = $this->db->get('product_categories');
+        public function get_categories() {
+            $this->db->select('product_categories.id, product_categories.category, COUNT(products.id) as product_count');
+            $this->db->from('product_categories');
+            $this->db->join('products', 'products.product_category = product_categories.id', 'left');
+            $this->db->group_by('product_categories.id');
+            $query = $this->db->get();
             return $query->result_array();
         }
 

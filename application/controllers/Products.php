@@ -16,10 +16,11 @@
             $this->pagination->initialize($config);
 
             $data['title'] = "Products";
+            $url['url'] = base_url() . 'products';
 
             $data['products'] = $this->product_model->get_products(FALSE, $config['per_page'], $offset);
 
-            $this->load->view('templates/header');
+            $this->load->view('templates/header',$url);
             $this->load->view('products/index', $data);
             $this->load->view('templates/footer');
         }
@@ -40,10 +41,12 @@
             $this->pagination->initialize($config);
 
             $data['title'] = "Manage Products";
+            $url['url'] = "";
+
 
             $data['products'] = $this->product_model->get_products(FALSE,$config['per_page'], $offset);
 
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $url);
             $this->load->view('products/manage', $data);
             $this->load->view('templates/footer');
         }
@@ -55,14 +58,16 @@
             }
 
             $data['product'] = $this->product_model->get_products($id);
+            $data['similar_products'] = $this->product_model->get_similar_products($data['product']['product_category'], $data['product']['id']);
 
             if (empty($data['product'])) {
                 show_404();
             }
 
             $data['title'] = "VIEW PRODUCT";
+            $url['url'] = "";
 
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $url);
             $this->load->view('products/view', $data);
             $this->load->view('templates/footer');
         }
@@ -75,6 +80,7 @@
 
             // set title
             $data['title'] = 'Create Product';
+            $url['url'] = '';
 
             // get product categories
             $data['product_categories'] = $this->category_model->get_categories();
@@ -88,7 +94,7 @@
             $this->form_validation->set_rules('product_category', 'Product Category', 'required');
 
             if ($this->form_validation->run() === FALSE) {
-                $this->load->view('templates/header');
+                $this->load->view('templates/header', $url);
                 $this->load->view('products/create', $data);
                 $this->load->view('templates/footer');
             } else {
@@ -148,6 +154,7 @@
 
             // set title
             $data['title'] = 'Update Product';
+            $url['url'] = '';
 
             // set form validation
             $this->form_validation->set_rules('product_name', 'Product Name', 'required|callback_check_product_name_exists');
@@ -166,7 +173,7 @@
 
             $data['title'] = 'Edit Post';
 
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $url);
             $this->load->view('products/edit', $data);
             $this->load->view('templates/footer');
         }

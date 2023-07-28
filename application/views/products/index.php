@@ -20,10 +20,11 @@
                             </a>
                             <div class="card-body">
                                 <a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>" class="text-reset" style="text-decoration:none;">
-                                    <h5 class="card-title mb-3"><?= $product['product_name']?></h5>
+                                    <h5 class="card-title mb-1"><?= $product['product_name']?></h5>
                                 </a>
-                                <p><?= $product['product_brand']?></p>
+                                <p style="margin-bottom:1px !important"><?= $product['product_brand']?></p>
                                 <h6 class="mb-3">Php <?= number_format($product['product_price'], 2)?></h6>
+                                <a href="<?php echo base_url(); ?>cart/add/<?= $product['id'] ?>" class="btn btn-outline-dark"><i class="bi-cart-plus-fill"></i> Add to Cart</a>
                             </div>
                         </div>
                     </div>

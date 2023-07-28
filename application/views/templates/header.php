@@ -18,10 +18,10 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/') ? 'active' : '' ; ?>" aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
                     <?php if($this->session->userdata('logged_in')) : ?>
-                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>products">Products</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>categories">Categories</a></li>
+                        <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/products') ? 'active' : '' ; ?>" href="<?php echo base_url(); ?>products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/categories') ? 'active' : '' ; ?>" href="<?php echo base_url(); ?>categories">Categories</a></li>
                     <?php endif; ?>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -29,9 +29,9 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-fill"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage">Manage Products</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
                                 <li><hr class="dropdown-divider" style="color:gray"/></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login">Login</a></li>
                             <?php endif; ?>
