@@ -12,9 +12,11 @@ $route['categories'] = 'categories/index';
 $route['categories/create'] = 'categories/create';
 $route['categories/products/(:any)'] = 'categories/products/$1';
 
+$route['pages/home'] = 'pages/view';
+$route['pages/home/(:any)'] = 'pages/view';
+
 $route['login'] = 'users/login';
 $route['default_controller'] = 'pages/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
-$route['(:any)'] = 'pages/view/$1';
+$route['(:any)'] = 'pages/view';
