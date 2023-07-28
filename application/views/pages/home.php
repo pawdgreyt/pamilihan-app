@@ -50,7 +50,12 @@
                                 </a>
                                 <p style="margin-bottom:1px !important"><?= $product['product_brand']?></p>
                                 <h6 class="mb-3">Php <?= number_format($product['product_price'], 2)?></h6>
-                                <a href="<?php echo base_url(); ?>cart/add/<?= $product['id'] ?>" class="btn btn-outline-dark"><i class="bi-cart-plus-fill"></i> Add to Cart</a>
+                                
+                                <?php echo form_open_multipart('cart/add'); ?>
+                                  <input type="hidden" name="user_id" value="<?= $this->session->userdata('user_id') ?>">
+                                  <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                  <button class="btn btn-outline-dark" type="submit"><i class="bi-cart-plus-fill"></i> Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>
