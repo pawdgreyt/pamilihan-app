@@ -5,44 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pamilihan - App</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/cart.png">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container" style="box-shadow: 0 4px 2px -2px gray;">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#CollapseNavBar" id="CollapseNavBarToggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/images/icon.png" style="width:150px;margin-top:-17px;"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="CollapseNavBar">
-                <ul class="nav navbar-nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/images/icon.png" style="width:150px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
                     <?php if($this->session->userdata('logged_in')) : ?>
-                        <li><a href="<?php echo base_url(); ?>products">Products</a></li>
-                        <li><a href="<?php echo base_url(); ?>categories">Categories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>categories">Categories</a></li>
                     <?php endif; ?>
                 </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <?php if ($this->session->userdata('logged_in')) : ?>
-                        <li><a>Hi Welcome <?php echo $this->session->userdata('name'); ?>!</a></li>
-                    <?php endif; ?>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdowntoggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-fill"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage">Manage Products</a></li>
+                                <li><hr class="dropdown-divider" style="color:gray"/></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login">Login</a></li>
@@ -50,6 +38,10 @@
                         </ul>
                     </li>
                 </ul>
+                <button class="btn btn-outline-dark" style="margin-left:10px">
+                    <i class="bi-cart-fill me-1"></i>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
             </div>
         </div>
     </nav>
