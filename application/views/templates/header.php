@@ -32,17 +32,17 @@
                             <?php if($this->session->userdata('logged_in')) : ?>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
                                 <li><hr class="dropdown-divider" style="color:gray"/></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
-                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>login">Login</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="bi bi-box-arrow-right"></i> Login</a></li>
                             <?php endif; ?>
                         </ul>
                     </li>
                 </ul>
-                <button class="btn btn-outline-dark" style="margin-left:10px">
+                <a href="<?php echo base_url(); ?>cart/index" class="btn btn-outline-dark" style="margin-left:10px">
                     <i class="bi-cart-fill me-1"></i>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"><?= count($this->cart->contents()); ?></span>
+                </a>
             </div>
         </div>
     </nav>

@@ -54,7 +54,7 @@
                                 <?php echo form_open_multipart('cart/add'); ?>
                                   <input type="hidden" name="user_id" value="<?= $this->session->userdata('user_id') ?>">
                                   <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                                  <button class="btn btn-outline-dark" type="submit"><i class="bi-cart-plus-fill"></i> Add to Cart</button>
+                                  <a href="<?php echo base_url('products/addToCart/'.$product['id']); ?>" class="btn btn-outline-dark" type="submit"><i class="bi-cart-plus-fill"></i> Add to Cart</a>
                                 </form>
                             </div>
                         </div>
