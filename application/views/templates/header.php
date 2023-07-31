@@ -30,12 +30,17 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-fill"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>manage/staff"><i class="bi bi-people"></i> Manage Staff</a></li>
-                                <li><hr class="dropdown-divider" style="color:gray"/></li>
+                                <?php if($this->session->userdata('role') != "customer") { ?>
+                                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
+                                    <?php if($this->session->userdata('role') == "admin") { ?>
+                                        <li><a class="dropdown-item" href="<?php echo base_url(); ?>manage/staff"><i class="bi bi-people"></i> Manage Staff</a></li>
+                                    <?php } ?>
+                                    <li><hr class="dropdown-divider" style="color:gray"/></li>
+                                <?php } ?>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="bi bi-box-arrow-right"></i> Login</a></li>
+                            <!-- <li><a class="dropdown-item" href="<?php echo base_url(); ?>register"><i class="bi bi-person-check"></i> Signup</a></li> -->
                             <?php endif; ?>
                         </ul>
                     </li>
@@ -56,6 +61,10 @@
 
         <?php if($this->session->flashdata('user_loggedout')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('user_registered')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>' ?>
         <?php endif;?>
 
         <?php if($this->session->flashdata('login_failed')): ?>

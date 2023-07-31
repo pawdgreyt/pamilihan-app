@@ -13,6 +13,24 @@
             }
         }
 
+        public function get_staffs(){
+            
+        }
+
+        public function register($enc_password){
+            // User Data
+            $data = array(
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('username'),
+                'password' => $enc_password,
+                'role' => 'customer',
+            );
+
+            // Insert
+            return $this->db->insert('users', $data);
+        }
+
         public function check_username_exists($username){
             $query = $this->db->get_where('users', array('username' => $username));
 

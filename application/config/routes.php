@@ -18,7 +18,10 @@ $route['carts/index'] = 'carts/index';
 $route['pages/home'] = 'pages/view';
 $route['pages/home/(:any)'] = 'pages/view';
 
+$route['manage/staff'] = 'users/index';
+
 $route['login'] = 'users/login';
+$route['register'] = 'users/register';
 $route['default_controller'] = 'pages/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
