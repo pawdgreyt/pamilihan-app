@@ -2,6 +2,11 @@
     class Pages extends CI_Controller {
 
         public function view($offset = 0) {
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
             $page = 'home';
             if (!file_exists(APPPATH . 'views/pages/' . $page . '.php')) {
                 show_404();

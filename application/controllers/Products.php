@@ -223,13 +223,109 @@
                 $this->image_lib->clear();
             }
 
-
             $this->product_model->update_product($product_image);
 
             // Set message
             $this->session->set_flashdata('product_updated', 'Product Updated!');
 
             redirect('products/manage');
+        }
+
+        public function addToCart($product_id){ // add to cart button
+            // Get the product details
+            $product = $this->product_model->get_products($product_id);
+
+            // Add product to the cart
+            $data = array(
+                'id'    => $product['id'],
+                'qty'    => 1,
+                'price'    => $product['product_price'],
+                'name'    => $product['product_name'],
+                'image' => $product['product_image']
+            );
+            $this->cart->insert($data);
+
+            if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $product['id'])) { // if not existing in table cart insert the data
+                $data_cart = array(
+                    'user_id'    => $this->session->userdata('user_id'),
+                    'product_id'    => $product['id'],
+                    'qty'    => 1,
+                    'price'    => $product['product_price'],
+                    'name'    => $product['product_name'],
+                    'image' => $product['product_image']
+                );
+
+                $this->cart_model->create_cart($data_cart);
+            } else {
+                $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $product['id']); // else update the data
+
+                $data_cart = array(
+                    'user_id'    => $this->session->userdata('user_id'),
+                    'product_id'    => $product['id'],
+                    'qty'    => $cart_details['qty'] + 1,
+                    'price'    => $product['product_price'],
+                    'name'    => $product['product_name'],
+                    'image' => $product['product_image']
+                );
+
+                $this->cart_model->update_cart($data_cart, $cart_details['id']);
+            }
+            
+            // Redirect 
+            redirect();
+        }
+
+        public function add_to_cart_from_form(){
+            $productId = $this->input->post('product_id');
+            $quantity = $this->input->post('quantity');
+            $product = $this->product_model->get_products($productId);
+
+            // Add product to the cart
+            $data = array(
+                'id'    => $productId,
+                'qty'    => $quantity,
+                'price'    => $product['product_price'],
+                'name'    => $product['product_name'],
+                'image' => $product['product_image']
+            );
+            $this->cart->insert($data);
+
+            if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $productId)) { // if not existing in table cart insert the data
+                $data_cart = array(
+                    'user_id'    => $this->session->userdata('user_id'),
+                    'product_id'    => $productId,
+                    'qty'    => $quantity,
+                    'price'    => $product['product_price'],
+                    'name'    => $product['product_name'],
+                    'image' => $product['product_image']
+                );
+
+                $this->cart_model->create_cart($data_cart);
+            } else {
+                $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $productId); // else update the data
+
+                $data_cart = array(
+                    'user_id'    => $this->session->userdata('user_id'),
+                    'product_id'    => $productId,
+                    'qty'    => $cart_details['qty'] + $quantity,
+                    'price'    => $product['product_price'],
+                    'name'    => $product['product_name'],
+                    'image' => $product['product_image']
+                );
+
+                $this->cart_model->update_cart($data_cart, $cart_details['id']);
+            }
+            
+            // Redirect 
+            redirect('products/view/' . $productId);
+        }
+
+        public function items_not_existing_in_cart($user_id,$product_id){
+            if ($this->cart_model->items_not_existing_in_cart($user_id, $product_id)) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         public function check_product_name_exists($product_name){

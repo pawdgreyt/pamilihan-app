@@ -13,7 +13,9 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <center>
+                        <button type="submit" class="btn btn-outline-dark btn-block"><i class="bi bi-box-arrow-right"></i> Login</button>
+                    </center>
                     <?php echo form_close(); ?>
                 </div>
             </div>
