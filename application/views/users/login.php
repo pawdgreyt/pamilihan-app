@@ -13,6 +13,7 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
                     </div>
+                    <p class="text-center">Don't have account yet? <a href="<?php echo base_url(); ?>register" style="color: black;">Register</a></p>
                     <center>
                         <button type="submit" class="btn btn-outline-dark btn-block"><i class="bi bi-box-arrow-right"></i> Login</button>
                     </center>

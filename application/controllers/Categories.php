@@ -23,6 +23,11 @@
                 redirect('users/login');
             }
 
+            // check role
+            if ($this->session->userdata('role') == "customer") {
+                redirect('categories');
+            }
+
             $data['title'] = 'Create Category';
             $url['url'] = '';
 

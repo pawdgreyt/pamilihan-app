@@ -61,8 +61,10 @@ function updateCartItem(obj, rowid){
             </table>
         </div>
     </div>
-    <div class="col-md-10"></div>
-    <div class="col-md-2">
-        
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <button class="btn btn-outline-dark mt-5 float-end">
+            <span style="font-weight:550;">PROCEED TO CHECKOUT</span> <i class="bi bi-cart-check-fill"></i>
+        </button>
     </div>
 </div>

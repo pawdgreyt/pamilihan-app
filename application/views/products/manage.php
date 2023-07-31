@@ -4,7 +4,7 @@
     }
 
     .phase-out {
-        color: red;
+        color: #ce181e;
     }
 </style>
 <br>
@@ -40,7 +40,7 @@
                         <tr>
                             <td><?= $product['id'] ?></td>
                             <td><a href="<?php echo base_url(); ?>products/view/<?= $product['id'] ?>" style="text-decoration:none;color:black;font-weight:550"><?= $product['product_name'] ?></a></td>
-                            <td><img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>" width="50px;" alt=""></td>
+                            <td><a href="<?php echo base_url(); ?>products/view/<?= $product['id']?>"><img src="<?php echo base_url(); ?>assets/images/products/<?= $product['product_image']?>" width="50px;" alt=""></a></td>
                             <td><?= $product['product_brand'] ?></td>
                             <td><?= word_limiter($product['product_description'], 10) ?></td>
                             <td><?= $product['product_qty'] ?></td>

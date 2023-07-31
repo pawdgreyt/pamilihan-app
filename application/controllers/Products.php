@@ -31,6 +31,11 @@
                 redirect('login');
             }
 
+            // check role
+            if ($this->session->userdata('role') == "customer") {
+                redirect();
+            }
+
             //Pagination config
             $config['base_url'] = base_url() . 'products/manage/';
             $config['total_rows'] = $this->db->count_all('products'); // counting of all rows of a table
