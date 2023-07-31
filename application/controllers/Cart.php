@@ -37,24 +37,26 @@ class Cart extends CI_Controller{
                     $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $item['id']); // else update the data
                     $product_details = $this->product_model->get_products($item['id']);
 
-                    $data_cart = array(
-                        'user_id'    => $this->session->userdata('user_id'),
-                        'product_id'    => $item['id'],
-                        'qty'    => $qty,
-                        'price'    => $product_details['product_price'],
-                        'name'    => $product_details['product_name'],
-                        'image' => $product_details['product_image']
-                    );
-
-                    $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                    if ($product_details['product_qty'] >= $qty) { // 
+                        $data = array(
+                            'rowid' => $rowid,
+                            'qty'   => $qty
+                        );
+                        $update = $this->cart->update($data);
+    
+                        $data_cart = array(
+                            'user_id'    => $this->session->userdata('user_id'),
+                            'product_id'    => $item['id'],
+                            'qty'    => $qty,
+                            'price'    => $product_details['product_price'],
+                            'name'    => $product_details['product_name'],
+                            'image' => $product_details['product_image']
+                        );
+    
+                        $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                    }
                 }
             }
-
-            $data = array(
-                'rowid' => $rowid,
-                'qty'   => $qty
-            );
-            $update = $this->cart->update($data);
         }
 
         // Return response

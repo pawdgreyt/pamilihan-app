@@ -13,6 +13,24 @@
                 $this->db->select('products.*','products_categories.category',FALSE);
                 $this->db->order_by('products.id', 'DESC');
                 $this->db->join('product_categories', 'product_categories.id = products.product_category');
+                $this->db->where('products.product_status', 'Active');
+                $query = $this->db->get('products');
+                return $query->result_array();
+            }
+
+            $query = $this->db->get_where('products', array('id' => $id));
+            return $query->row_array();
+        }
+
+        public function get_products_all_status($id = FALSE, $limit = FALSE, $offset = FALSE){
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
+            
+            if ($id === FALSE) {
+                $this->db->select('products.*','products_categories.category',FALSE);
+                $this->db->order_by('products.id', 'DESC');
+                $this->db->join('product_categories', 'product_categories.id = products.product_category');
                 $query = $this->db->get('products');
                 return $query->result_array();
             }
@@ -26,7 +44,7 @@
             $this->db->limit(4); // limit the similar products to 4
         
             // Create a proper condition array for the where clause
-            $this->db->where(array('product_category' => $product_category, 'id !=' => $view_product_id));
+            $this->db->where(array('product_category' => $product_category, 'id !=' => $view_product_id, 'product_status' => 'Active'));
         
             $query = $this->db->get('products');
             return $query->result_array();

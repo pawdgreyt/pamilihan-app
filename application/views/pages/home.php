@@ -52,9 +52,9 @@
                                 <h6 class="mb-3">Php <?= number_format($product['product_price'], 2)?></h6>
                                 
                                 <?php echo form_open_multipart('cart/add'); ?>
-                                  <input type="hidden" name="user_id" value="<?= $this->session->userdata('user_id') ?>">
-                                  <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                                  <a href="<?php echo base_url('products/addToCart/'.$product['id']); ?>" class="btn btn-outline-dark" type="submit"><i class="bi-cart-plus-fill"></i> Add to Cart</a>
+                                    <input type="hidden" name="user_id" value="<?= $this->session->userdata('user_id') ?>">
+                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                    <a href="<?php echo base_url('products/addToCart/'.$product['id']); ?>" class="btn btn-outline-dark" type="submit"><i class="bi-cart-plus-fill"></i> Add to Cart</a>
                                 </form>
                             </div>
                         </div>

@@ -42,7 +42,7 @@ function updateCartItem(obj, rowid){
                         <td><?php echo 'Php '.number_format($item["price"], 2); ?></td>
                         <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
                         <td  style="text-align: right;"><?php echo 'Php '.number_format($item["subtotal"], 2); ?></td>
-                        <td  style="text-align: right;"><button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete item?')?window.location.href='<?php echo base_url('cart/removeItem/'.$item["rowid"]); ?>':false;"><i class="bi bi-trash"></i> </button> </td>
+                        <td  style="text-align: right;"><button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure to delete item?')?window.location.href='<?php echo base_url('cart/removeItem/'.$item["rowid"]); ?>':false;"><i class="bi bi-trash"></i> </button> </td>
                     </tr>
                     <?php } }else{ ?>
                     <tr><td colspan="6"><p>Your cart is empty.....</p></td>
@@ -60,5 +60,9 @@ function updateCartItem(obj, rowid){
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+        
     </div>
 </div>
