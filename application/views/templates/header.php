@@ -31,6 +31,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>manage/staff"><i class="bi bi-people"></i> Manage Staff</a></li>
                                 <li><hr class="dropdown-divider" style="color:gray"/></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>

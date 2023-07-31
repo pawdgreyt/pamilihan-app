@@ -53,6 +53,16 @@
                 </select>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Status <strong style="color:red">*</strong></label>
+                <select name="product_status" class="form-control" required autocomplete="off">
+                    <option value="" selected disabled>Select Status</option>
+                    <option value="Active" <?= ("Active" == $product['product_status']) ? 'selected' : '' ; ?>>Active</option>
+                    <option value="Phase Out" <?= ("Phase Out" == $product['product_status']) ? 'selected' : '' ; ?>>Phase Out</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">

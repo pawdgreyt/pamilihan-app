@@ -44,7 +44,7 @@
             $url['url'] = "";
 
 
-            $data['products'] = $this->product_model->get_products(FALSE,$config['per_page'], $offset);
+            $data['products'] = $this->product_model->get_products_all_status(FALSE,$config['per_page'], $offset);
 
             $this->load->view('templates/header', $url);
             $this->load->view('products/manage', $data);
@@ -163,6 +163,7 @@
             $this->form_validation->set_rules('product_price', 'Product Price', 'required');
             $this->form_validation->set_rules('product_qty', 'Product Qty', 'required');
             $this->form_validation->set_rules('product_category', 'Product Category', 'required');
+            $this->form_validation->set_rules('product_status', 'Product Status', 'required');
 
             // get product categories
             $data['product_categories'] = $this->category_model->get_categories();
@@ -235,44 +236,46 @@
             // Get the product details
             $product = $this->product_model->get_products($product_id);
 
-            // Add product to the cart
-            $data = array(
-                'id'    => $product['id'],
-                'qty'    => 1,
-                'price'    => $product['product_price'],
-                'name'    => $product['product_name'],
-                'image' => $product['product_image']
-            );
-            $this->cart->insert($data);
-
-            if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $product['id'])) { // if not existing in table cart insert the data
-                $data_cart = array(
-                    'user_id'    => $this->session->userdata('user_id'),
-                    'product_id'    => $product['id'],
+            if ($product['product_status'] == "Active" AND $product['product_qty'] >= 1) { //check if product status is active and has stocks
+                // Add product to the cart
+                $data = array(
+                    'id'    => $product['id'],
                     'qty'    => 1,
                     'price'    => $product['product_price'],
                     'name'    => $product['product_name'],
                     'image' => $product['product_image']
                 );
+                $this->cart->insert($data);
 
-                $this->cart_model->create_cart($data_cart);
-            } else {
-                $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $product['id']); // else update the data
+                if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $product['id'])) { // if not existing in table cart insert the data
+                    $data_cart = array(
+                        'user_id'    => $this->session->userdata('user_id'),
+                        'product_id'    => $product['id'],
+                        'qty'    => 1,
+                        'price'    => $product['product_price'],
+                        'name'    => $product['product_name'],
+                        'image' => $product['product_image']
+                    );
 
-                $data_cart = array(
-                    'user_id'    => $this->session->userdata('user_id'),
-                    'product_id'    => $product['id'],
-                    'qty'    => $cart_details['qty'] + 1,
-                    'price'    => $product['product_price'],
-                    'name'    => $product['product_name'],
-                    'image' => $product['product_image']
-                );
+                    $this->cart_model->create_cart($data_cart);
+                } else {
+                    $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $product['id']); // else update the data
 
-                $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                    $data_cart = array(
+                        'user_id'    => $this->session->userdata('user_id'),
+                        'product_id'    => $product['id'],
+                        'qty'    => $cart_details['qty'] + 1,
+                        'price'    => $product['product_price'],
+                        'name'    => $product['product_name'],
+                        'image' => $product['product_image']
+                    );
+
+                    $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                }
             }
             
             // Redirect 
-            redirect();
+            redirect($_SERVER['HTTP_REFERER']);
         }
 
         public function add_to_cart_from_form(){
@@ -280,40 +283,42 @@
             $quantity = $this->input->post('quantity');
             $product = $this->product_model->get_products($productId);
 
-            // Add product to the cart
-            $data = array(
-                'id'    => $productId,
-                'qty'    => $quantity,
-                'price'    => $product['product_price'],
-                'name'    => $product['product_name'],
-                'image' => $product['product_image']
-            );
-            $this->cart->insert($data);
-
-            if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $productId)) { // if not existing in table cart insert the data
-                $data_cart = array(
-                    'user_id'    => $this->session->userdata('user_id'),
-                    'product_id'    => $productId,
+            if ($product['product_status'] == 'Active' AND $product['product_qty'] >= $quantity) { // check if the product status is active and the quantity is greater than or equal to qty stocks
+                // Add product to the cart
+                $data = array(
+                    'id'    => $productId,
                     'qty'    => $quantity,
                     'price'    => $product['product_price'],
                     'name'    => $product['product_name'],
                     'image' => $product['product_image']
                 );
+                $this->cart->insert($data);
 
-                $this->cart_model->create_cart($data_cart);
-            } else {
-                $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $productId); // else update the data
+                if ($this->items_not_existing_in_cart($this->session->userdata('user_id'), $productId)) { // if not existing in table cart insert the data
+                    $data_cart = array(
+                        'user_id'    => $this->session->userdata('user_id'),
+                        'product_id'    => $productId,
+                        'qty'    => $quantity,
+                        'price'    => $product['product_price'],
+                        'name'    => $product['product_name'],
+                        'image' => $product['product_image']
+                    );
 
-                $data_cart = array(
-                    'user_id'    => $this->session->userdata('user_id'),
-                    'product_id'    => $productId,
-                    'qty'    => $cart_details['qty'] + $quantity,
-                    'price'    => $product['product_price'],
-                    'name'    => $product['product_name'],
-                    'image' => $product['product_image']
-                );
+                    $this->cart_model->create_cart($data_cart);
+                } else {
+                    $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $productId); // else update the data
 
-                $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                    $data_cart = array(
+                        'user_id'    => $this->session->userdata('user_id'),
+                        'product_id'    => $productId,
+                        'qty'    => $cart_details['qty'] + $quantity,
+                        'price'    => $product['product_price'],
+                        'name'    => $product['product_name'],
+                        'image' => $product['product_image']
+                    );
+
+                    $this->cart_model->update_cart($data_cart, $cart_details['id']);
+                }
             }
             
             // Redirect 

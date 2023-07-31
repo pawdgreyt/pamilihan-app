@@ -1,3 +1,12 @@
+<style>
+    .active {
+        color: #00b100;
+    }
+
+    .phase-out {
+        color: red;
+    }
+</style>
 <br>
 <div class="row">
     <div class="col-lg-6">
@@ -20,8 +29,9 @@
                         <th width="20%">NAME</th>
                         <th></th>
                         <th>BRAND</th>
-                        <th>DESCRIPTION</th>
+                        <th width="30%">DESCRIPTION</th>
                         <th>QTY</th>
+                        <th>Status</th>
                         <th><center>ACTION</center></th>
                     </tr>
                 </thead>
@@ -34,6 +44,7 @@
                             <td><?= $product['product_brand'] ?></td>
                             <td><?= word_limiter($product['product_description'], 10) ?></td>
                             <td><?= $product['product_qty'] ?></td>
+                            <td class="<?= ($product['product_status'] == "Active") ? 'active' : 'phase-out' ; ?>"><span >●</span> <?= $product['product_status'] ?></td>
                             <td>
                                 <center>
                                     <a href="<?php echo base_url(); ?>products/edit/<?= $product['id'] ?>" type="button" class="btn btn-sm btn-outline-dark">

@@ -16,7 +16,6 @@
         }
 
         public function create_cart($insert_data){
-
             $data = array(
                 'user_id' => $insert_data['user_id'],
                 'product_id' => $insert_data['product_id'],
