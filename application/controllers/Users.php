@@ -29,14 +29,11 @@
 
                     $this->session->set_userdata($user_data);
 
-                    // Set message
-                    $this->session->set_flashdata('user_loggedin', 'You are now logged in');
-
                     // Fetching all the items in cart of user
                     $all_cart_items = $this->cart_model->get_all_cart_items_by_user();
                     foreach ($all_cart_items as $item) {
                         $data = array(
-                            'id'    => $item['id'],
+                            'id'    => $item['product_id'],
                             'qty'    => $item['qty'],
                             'price'    => $item['price'],
                             'name'    => $item['name'],
@@ -44,6 +41,9 @@
                         );
                         $this->cart->insert($data);
                     }
+
+                    // Set message
+                    $this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
                     redirect('pages/view');
                 } else {

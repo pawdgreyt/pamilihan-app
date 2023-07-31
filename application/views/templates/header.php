@@ -19,8 +19,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/') ? 'active' : '' ; ?>" aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
                     <?php if($this->session->userdata('logged_in')) : ?>
+                        <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/') ? 'active' : '' ; ?>" aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
                         <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/products') ? 'active' : '' ; ?>" href="<?php echo base_url(); ?>products">Products</a></li>
                         <li class="nav-item"><a class="nav-link <?= ($url == 'http://pamilihan-app.test/categories') ? 'active' : '' ; ?>" href="<?php echo base_url(); ?>categories">Categories</a></li>
                     <?php endif; ?>

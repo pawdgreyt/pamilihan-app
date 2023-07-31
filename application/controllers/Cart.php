@@ -31,12 +31,6 @@ class Cart extends CI_Controller{
         
         // Update item in the cart
         if(!empty($rowid) && !empty($qty)){
-            $data = array(
-                'rowid' => $rowid,
-                'qty'   => $qty
-            );
-            $update = $this->cart->update($data);
-
             // Update the cart in database as well
             foreach ($this->cart->contents() as $item) {
                 if ($item['rowid'] == $rowid) {
@@ -55,6 +49,12 @@ class Cart extends CI_Controller{
                     $this->cart_model->update_cart($data_cart, $cart_details['id']);
                 }
             }
+
+            $data = array(
+                'rowid' => $rowid,
+                'qty'   => $qty
+            );
+            $update = $this->cart->update($data);
         }
 
         // Return response
