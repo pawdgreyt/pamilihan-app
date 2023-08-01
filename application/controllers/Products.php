@@ -19,6 +19,7 @@
             $url['url'] = base_url() . 'products';
 
             $data['products'] = $this->product_model->get_products(FALSE, $config['per_page'], $offset);
+            $data['categories'] = $this->category_model->get_categories();
 
             $this->load->view('templates/header',$url);
             $this->load->view('products/index', $data);

@@ -14,8 +14,8 @@
             <form action="<?php echo base_url('products/add_to_cart_from_form'); ?>" method="post">
                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" name="quantity" value="1" style="max-width: 6rem" <?= ($product['product_status'] != "active") ? 'disabled' : '' ; ?>>
-                    <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button" <?= ($product['product_status'] != "Active") ? 'disabled' : '' ; ?>>
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" name="quantity" value="1" style="max-width: 6rem" <?= ($product['product_status'] == "Active") ? '' : 'disabled' ; ?>>
+                    <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button" <?= ($product['product_status'] == "Active") ? '' : 'disabled' ; ?>>
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
