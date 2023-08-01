@@ -1,6 +1,19 @@
 <br>
 <div class="row">
-    <h2><?= $title?></h2>
+<div class="col-lg-6">
+        <h2><?= $title?></h2>
+    </div>
+    <div class="col-lg-3"></div>
+    <!-- <div class="col-lg-3">
+        <form action="">
+            <select name="product_category" class="form-control"  required autocomplete="off">
+                <option value="All" selected>Filter By Category: All</option>
+                <?php foreach($categories as $category) : ?>
+                <option value="<?= $category['id']?>">Filter By Category: <?= $category['category']?></option>
+                <?php endforeach ?>
+            </select>
+        </form>
+    </div> -->
 </div>
 <div class="row">
     <section style="background-color: #fbfbfb; height:100%; border-radius: .5rem">
