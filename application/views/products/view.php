@@ -25,7 +25,7 @@
     </div>
 
     <div class="row" style="margin-top:30px;">
-        <h3>Similar Products</h3>
+        <?= (!empty($similar_products)) ? '<h3>Similar Products</h3>' : '' ; ?>
         <?php foreach ($similar_products as $product) : ?>
             <div class="col-lg-3 col-md-4 mb-4 text-center">
                 <div class="card">
