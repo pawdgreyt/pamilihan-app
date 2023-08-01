@@ -35,7 +35,7 @@ class Cart extends CI_Controller{
             foreach ($this->cart->contents() as $item) {
                 if ($item['rowid'] == $rowid) {
                     $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $item['id']); // else update the data
-                    $product_details = $this->product_model->get_products($item['id']);
+                    $product_details = $this->product_model->get_products(FALSE, $item['id']);
 
                     if ($product_details['product_qty'] >= $qty) { // Check if the product quantity is greater than the quantity
                         $data = array(

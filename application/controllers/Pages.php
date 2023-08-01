@@ -17,14 +17,14 @@
 
             //Pagination config
             $config['base_url'] = base_url() . 'pages/view';
-            $config['total_rows'] = $this->db->count_all('products'); // counting of all rows of a table
+            $config['total_rows'] = $this->product_model->count_products_by_category("All");
             $config['per_page'] = 20;
             $config['uri_segment'] = 3;
             $config['attributes'] = array('class' => 'pagination-links');
 
             $this->pagination->initialize($config);
 
-            $data['products'] = $this->product_model->get_products(FALSE, $config['per_page'] , $offset);
+            $data['products'] = $this->product_model->get_products(FALSE,FALSE, $config['per_page'] , $offset);
 
             $this->load->view('templates/header', $url);
             $this->load->view('pages/home', $data);

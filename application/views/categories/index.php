@@ -16,7 +16,7 @@
     <ul class="list-group">
     <?php foreach($categories as $category) : ?>
         <li class="list-group-item">
-            <span style="font-weight:550"><?= $category['category'] ?></span> (<?= $category['product_count'] ?> products)
+            <a href="<?php echo base_url(); ?>products/index?product_category=<?= $category['id'] ?>" style="color:black"><span style="font-weight:550"><?= $category['category'] ?></span></a> (<?= $category['product_count'] ?> products)
         </li>
     <?php endforeach ?>
     </ul>

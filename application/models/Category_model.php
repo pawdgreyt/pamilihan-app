@@ -5,7 +5,7 @@
         }
 
         public function get_categories() {
-            $this->db->select('product_categories.id, product_categories.category, COUNT(products.id) as product_count');
+            $this->db->select('product_categories.id, product_categories.category, COUNT(CASE WHEN products.product_status = "Active" THEN products.id END) as product_count', FALSE);
             $this->db->from('product_categories');
             $this->db->join('products', 'products.product_category = product_categories.id', 'left');
             $this->db->group_by('product_categories.id');

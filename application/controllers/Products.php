@@ -5,10 +5,12 @@
             if(!$this->session->userdata('logged_in')){
                 redirect('login');
             }
+            
+            $selected_category = $this->input->get('product_category');
 
             // Pagination config
             $config['base_url'] = base_url() . 'products/index/';
-            $config['total_rows'] = $this->db->count_all('products'); // counting of all rows of a table
+            $config['total_rows'] = $this->product_model->count_products_by_category($selected_category);
             $config['per_page'] = 8;
             $config['uri_segment'] = 3;
             $config['attributes'] = array('class' => 'pagination-links');
@@ -18,7 +20,7 @@
             $data['title'] = "Products";
             $url['url'] = base_url() . 'products';
 
-            $data['products'] = $this->product_model->get_products(FALSE, $config['per_page'], $offset);
+            $data['products'] = $this->product_model->get_products($selected_category, FALSE, $config['per_page'], $offset);
             $data['categories'] = $this->category_model->get_categories();
 
             $this->load->view('templates/header',$url);
@@ -63,7 +65,7 @@
                 redirect('login');
             }
 
-            $data['product'] = $this->product_model->get_products($id);
+            $data['product'] = $this->product_model->get_products(FALSE,$id);
             $data['similar_products'] = $this->product_model->get_similar_products($data['product']['product_category'], $data['product']['id']);
 
             if (empty($data['product'])) {
@@ -156,7 +158,7 @@
                 redirect('login');
             }
 
-            $data['product'] = $this->product_model->get_products($id);
+            $data['product'] = $this->product_model->get_products(FALSE,$id);
 
             // set title
             $data['title'] = 'Update Product';
@@ -240,7 +242,7 @@
 
         public function addToCart($product_id){ // add to cart button
             // Get the product details
-            $product = $this->product_model->get_products($product_id);
+            $product = $this->product_model->get_products(FALSE,$product_id);
 
             if ($product['product_status'] == "Active" AND $product['product_qty'] >= 1) { //check if product status is active and has stocks
                 // Add product to the cart
@@ -287,7 +289,7 @@
         public function add_to_cart_from_form(){
             $productId = $this->input->post('product_id');
             $quantity = $this->input->post('quantity');
-            $product = $this->product_model->get_products($productId);
+            $product = $this->product_model->get_products(FALSE,$productId);
 
             if ($product['product_status'] == 'Active' AND $product['product_qty'] >= $quantity) { // check if the product status is active and the quantity is greater than or equal to qty stocks
                 // Add product to the cart

@@ -4,7 +4,7 @@
             $this->load->database();
         }
 
-        public function get_products($id = FALSE, $limit = FALSE, $offset = FALSE){
+        public function get_products($category_id = FALSE, $id = FALSE, $limit = FALSE, $offset = FALSE){
             if ($limit) {
                 $this->db->limit($limit, $offset);
             }
@@ -14,12 +14,23 @@
                 $this->db->order_by('products.id', 'DESC');
                 $this->db->join('product_categories', 'product_categories.id = products.product_category');
                 $this->db->where('products.product_status', 'Active');
+                if ($category_id != FALSE AND $category_id != "All") {
+                    $this->db->where('products.product_category', $category_id);
+                }
                 $query = $this->db->get('products');
                 return $query->result_array();
             }
 
             $query = $this->db->get_where('products', array('id' => $id));
             return $query->row_array();
+        }
+
+        public function count_products_by_category($category_id) {
+            $this->db->where('products.product_status', 'Active');
+            if ($category_id && $category_id !== 'All') {
+                $this->db->where('products.product_category', $category_id);
+            }
+            return $this->db->count_all_results('products');
         }
 
         public function get_products_all_status($id = FALSE, $limit = FALSE, $offset = FALSE){
