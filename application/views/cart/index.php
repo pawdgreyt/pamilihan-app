@@ -63,8 +63,10 @@ function updateCartItem(obj, rowid){
     </div>
     <div class="col-md-9"></div>
     <div class="col-md-3">
+        <?php if($this->cart->total_items() > 0) { ?>
         <button class="btn btn-outline-dark mt-5 float-end">
             <span style="font-weight:550;">PROCEED TO CHECKOUT</span> <i class="bi bi-cart-check-fill"></i>
         </button>
+        <?php } ?>
     </div>
 </div>
