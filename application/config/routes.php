@@ -19,6 +19,9 @@ $route['pages/home'] = 'pages/view';
 $route['pages/home/(:any)'] = 'pages/view';
 
 $route['manage/staff'] = 'users/index';
+$route['staff/create'] = 'users/create_staff';
+$route['staff/update'] = 'users/update_staff';
+$route['change_password'] = 'users/change_password';
 
 $route['login'] = 'users/login';
 $route['register'] = 'users/register';
