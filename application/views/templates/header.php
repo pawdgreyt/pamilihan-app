@@ -30,6 +30,8 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-fill"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
+                                
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>change_password"><i class="bi bi-unlock-fill"></i> Change Password</a></li>
                                 <?php if($this->session->userdata('role') != "customer") { ?>
                                     <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
                                     <?php if($this->session->userdata('role') == "admin") { ?>
@@ -73,6 +75,18 @@
 
         <?php if($this->session->flashdata('category_created')): ?>
             <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('staff_created')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('staff_created').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('staff_updated')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('staff_updated').'</p>' ?>
+        <?php endif;?>
+
+        <?php if($this->session->flashdata('password_changed')): ?>
+            <?php echo '<p class="alert alert-success">'.$this->session->flashdata('password_changed').'</p>' ?>
         <?php endif;?>
 
         <?php if($this->session->flashdata('product_created')): ?>
