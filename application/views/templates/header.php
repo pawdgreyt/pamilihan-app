@@ -37,7 +37,7 @@
                                     <?php } ?>
                                     <li><hr class="dropdown-divider" style="color:gray"/></li>
                                 <?php } ?>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>change_password"><i class="bi bi-unlock-fill"></i> Change Password</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>change_password"><i class="bi bi-unlock"></i> Change Password</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="bi bi-box-arrow-right"></i> Login</a></li>
