@@ -18,7 +18,7 @@
             //Pagination config
             $config['base_url'] = base_url() . 'pages/view';
             $config['total_rows'] = $this->product_model->count_products_by_category("All");
-            $config['per_page'] = 20;
+            $config['per_page'] = 12;
             $config['uri_segment'] = 3;
             $config['attributes'] = array('class' => 'pagination-links');
 

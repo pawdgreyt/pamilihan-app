@@ -6,6 +6,7 @@
                 redirect('login');
             }
             
+            // Getting the Product Filter
             $selected_category = $this->input->get('product_category');
 
             // Pagination config
@@ -14,15 +15,15 @@
             $config['per_page'] = 8;
             $config['uri_segment'] = 3;
             $config['attributes'] = array('class' => 'pagination-links');
-
             $this->pagination->initialize($config);
 
+            // Defining the data for the views
             $data['title'] = "Products";
             $url['url'] = base_url() . 'products';
-
             $data['products'] = $this->product_model->get_products($selected_category, FALSE, $config['per_page'], $offset);
             $data['categories'] = $this->category_model->get_categories();
 
+            // Loading the views
             $this->load->view('templates/header',$url);
             $this->load->view('products/index', $data);
             $this->load->view('templates/footer');
