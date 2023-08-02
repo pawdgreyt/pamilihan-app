@@ -61,7 +61,7 @@
                 'username' => $this->input->post('username'),
                 'phone' => $this->input->post('phone'),
                 'address' => $this->input->post('address'),
-                'status' => $this->input->post('status'),
+                'status' => "Active",
             );
 
             $this->db->where('id', $this->session->userdata('user_id'));
