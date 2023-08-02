@@ -32,10 +32,10 @@
                                     date("F d, Y H:i:s", strtotime($order['created']))
                                 ?>
                             </td>
-                            <td><?= 'Php'.number_format($order['grand_total'], 2) ?></td>
+                            <td><?= 'Php '.number_format($order['grand_total'], 2) ?></td>
                             <td>
                                 <center>
-                                    <a href="#" type="button" class="btn btn-sm btn-outline-dark">
+                                    <a href="<?php echo base_url(); ?>view_order/<?= $order['id'] ?>" type="button" class="btn btn-sm btn-outline-dark">
                                         <i class="bi-eye-fill"></i>
                                     </a>
                                 </center>
