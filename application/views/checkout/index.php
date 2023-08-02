@@ -64,10 +64,9 @@
                 <?php echo form_error('address','<p class="help-block error">','</p>'); ?>
             </div>
             <?php echo form_open('checkout/index'); ?>
-                <br>
                 <input type="hidden" name="placeOrder" value="Place Order">
                 <center>
-                    <button class="btn btn-outline-dark btn-lg btn-block" type="submit"><i class="bi bi-cart-check-fill"></i> Place Order</button>
+                    <button class="btn btn-outline-dark btn-lg btn-block mt-2" type="submit"><i class="bi bi-cart-check-fill"></i> Place Order</button>
                 </center>
             </form>
         </div>
