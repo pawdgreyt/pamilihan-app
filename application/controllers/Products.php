@@ -334,6 +334,36 @@
             redirect('products/view/' . $productId);
         }
 
+        public function manage_orders($offset = 0){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            // check login
+            if(!$this->session->userdata('role') == "customer"){
+                redirect();
+            }
+
+            // Pagination config
+            $config['base_url'] = base_url() . 'manage_orders';
+            $config['total_rows'] = $this->db->count_all('orders');
+            $config['per_page'] = 8;
+            $config['uri_segment'] = 3;
+            $config['attributes'] = array('class' => 'pagination-links');
+            $this->pagination->initialize($config);
+
+            // Defining the data for the views
+            $data['title'] = "Orders List";
+            $url['url'] = "";
+            $data['orders'] = $this->product_model->get_orders(FALSE, $config['per_page'], $offset);
+
+            // Loading the views
+            $this->load->view('templates/header',$url);
+            $this->load->view('products/manage_orders', $data);
+            $this->load->view('templates/footer');
+        }
+
         public function items_not_existing_in_cart($user_id,$product_id){
             if ($this->cart_model->items_not_existing_in_cart($user_id, $product_id)) {
                 return true;

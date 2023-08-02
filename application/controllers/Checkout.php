@@ -51,6 +51,11 @@
                     $ordItemData[$i]['product_id']     = $item['id'];
                     $ordItemData[$i]['quantity']     = $item['qty'];
                     $ordItemData[$i]['sub_total']     = $item["subtotal"];
+
+                    // Delete Cart in Database
+                    $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $item['id']);
+                    $this->cart_model->remove_item($cart_details['id']);
+                    
                     $i++;
                 }
                 
@@ -61,15 +66,6 @@
                     if($insertOrderItems){
                         // Remove items from the cart
                         $this->cart->destroy();
-
-                        // Deleting also the cart in database
-                        foreach ($this->cart->contents() as $item) {
-                            if ($item['rowid'] == $rowid) {
-                                $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $item['id']);
-                
-                                $this->cart_model->remove_item($cart_details['id']);
-                            }
-                        }
                         
                         // Return order ID
                         return $insertOrder;

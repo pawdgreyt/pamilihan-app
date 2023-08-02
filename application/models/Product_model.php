@@ -30,6 +30,27 @@
             return $query->row_array();
         }
 
+        public function get_orders($id = FALSE, $limit = FALSE, $offset = FALSE){
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
+
+            if ($id === FALSE) {
+                $this->db->select('o.*, c.name, c.email, c.phone, c.address');
+                $this->db->from('orders as o');
+                $this->db->join('users as c', 'c.id = o.customer_id', 'left');
+                $query = $this->db->get();
+                return $result = $query->result_array();
+            }
+
+            $this->db->select('o.*, c.name, c.email, c.phone, c.address');
+            $this->db->from('orders as o');
+            $this->db->join('users as c', 'c.id = o.customer_id', 'left');
+            $this->db->where('o.id', $id);
+            $query = $this->db->get();
+            return $result = $query->row_array();
+        }
+
         public function count_products_by_category($category_id) {
             $this->db->where('products.product_status', 'Active');
             if ($category_id && $category_id !== 'All') {
