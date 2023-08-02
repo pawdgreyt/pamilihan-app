@@ -354,7 +354,7 @@
             $this->pagination->initialize($config);
 
             // Defining the data for the views
-            $data['title'] = "Orders";
+            $data['title'] = "Orders List";
             $url['url'] = "";
             $data['orders'] = $this->product_model->get_orders(FALSE, $config['per_page'], $offset);
 

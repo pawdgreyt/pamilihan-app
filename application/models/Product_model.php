@@ -34,7 +34,7 @@
             if ($limit) {
                 $this->db->limit($limit, $offset);
             }
-            
+
             if ($id === FALSE) {
                 $this->db->select('o.*, c.name, c.email, c.phone, c.address');
                 $this->db->from('orders as o');
