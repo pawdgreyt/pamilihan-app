@@ -171,7 +171,7 @@
             $data['staff'] = $this->user_model->get_staffs($id);
 
             // set title
-            $data['title'] = 'Update Staff';
+            $data['title'] = 'Update';
             $url['url'] = '';
 
             // set form validation

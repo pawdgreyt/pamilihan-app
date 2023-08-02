@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <h2>Update: <?= $product['product_name']; ?></h2>
+    <h2><?= $product['product_name']; ?></h2>
 
     <span style="color:red">
     <?php 

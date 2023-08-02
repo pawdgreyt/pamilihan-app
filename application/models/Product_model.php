@@ -17,6 +17,11 @@
                 if ($category_id != FALSE AND $category_id != "All") {
                     $this->db->where('products.product_category', $category_id);
                 }
+                // Search Query
+                // $this->db->like('products.product_name', $search);
+                // $this->db->or_like('products.product_brand', $search);
+                // $this->db->or_like('products.product_description', $search);
+                // $this->db->or_like('product_categories.category', $search);
                 $query = $this->db->get('products');
                 return $query->result_array();
             }

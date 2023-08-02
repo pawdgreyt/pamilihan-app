@@ -45,7 +45,7 @@ function updateCartItem(obj, rowid){
                         <td  style="text-align: right;"><button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure to delete item?')?window.location.href='<?php echo base_url('cart/removeItem/'.$item["rowid"]); ?>':false;"><i class="bi bi-trash"></i> </button> </td>
                     </tr>
                     <?php } }else{ ?>
-                    <tr><td colspan="6"><p>Your cart is empty.....</p></td>
+                    <tr><td colspan="6" style="text-align:center;"><p>Your Cart is Empty.</p></td>
                     <?php } ?>
                     <?php if($this->cart->total_items() > 0){ ?>
                     <tr>

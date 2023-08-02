@@ -8,7 +8,7 @@
 
 <?php echo form_open_multipart('categories/create'); ?>
     <div class="form-group">   
-        <label>Name</label>
+        <label>Name <strong style="color:red">*</strong></label>
         <input type="text" class="form-control" name="category" placeholder="Enter Category"> 
     </div>
     <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
