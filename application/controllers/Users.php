@@ -100,6 +100,70 @@
             redirect('login');
         }
 
+        public function my_profile(){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+
+            $data['profile'] = $this->user_model->get_staffs($this->session->userdata("user_id"));
+
+            // set title
+            $data['title'] = 'My Profile';
+            $url['url'] = '';
+
+            if (empty($data['profile'])) {
+                show_404();
+            }
+
+            $this->load->view('templates/header', $url);
+            $this->load->view('users/my_profile', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function update_profile(){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            $data['profile'] = $this->user_model->get_staffs($this->session->userdata("user_id"));
+
+            // set title
+            $data['title'] = 'Update Profile';
+            $url['url'] = '';
+
+            // set form validation
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
+            $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
+            $this->form_validation->set_rules('phone', 'Email', 'required');
+            $this->form_validation->set_rules('address', 'Email', 'required');
+
+            if (empty($data['profile'])) {
+                show_404();
+            }
+
+            $this->load->view('templates/header', $url);
+            $this->load->view('users/update_profile', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function updateprofile(){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            $this->user_model->update_profile();
+
+            // Set message
+            $this->session->set_flashdata('profile_updated', 'Profile Updated!');
+
+            redirect('my_profile');
+        }
+
         public function index($offset = 0){
             // check login
             if(!$this->session->userdata('logged_in')){
@@ -193,6 +257,24 @@
             $this->load->view('templates/footer');
         }
 
+        public function updatestaff(){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            if ($this->session->userdata('role') != "admin") {
+                redirect();
+            }
+
+            $this->user_model->update_staff();
+
+            // Set message
+            $this->session->set_flashdata('staff_updated', 'Staff Updated!');
+
+            redirect('manage/staff');
+        }
+
         public function change_password(){
             // check login
             if(!$this->session->userdata('logged_in')){
@@ -222,24 +304,6 @@
                 $this->session->set_flashdata('password_changed', 'Password Changed!');
                 redirect();
             }
-        }
-
-        public function updatestaff(){
-            // check login
-            if(!$this->session->userdata('logged_in')){
-                redirect('login');
-            }
-
-            if ($this->session->userdata('role') != "admin") {
-                redirect();
-            }
-
-            $this->user_model->update_staff();
-
-            // Set message
-            $this->session->set_flashdata('staff_updated', 'Staff Updated!');
-
-            redirect('manage/staff');
         }
 
         public function check_old_password($oldpassword){

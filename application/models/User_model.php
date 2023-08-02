@@ -50,7 +50,21 @@
                 'status' => $this->input->post('status'),
             );
 
-            $this->db->where('id', $this->input->post('id'));
+            $this->db->where('id', $this->session->userdata("user_id"));
+            return $this->db->update('users', $data);
+        }
+
+        public function update_profile(){
+            $data = array(
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('username'),
+                'phone' => $this->input->post('phone'),
+                'address' => $this->input->post('address'),
+                'status' => $this->input->post('status'),
+            );
+
+            $this->db->where('id', $this->session->userdata('user_id'));
             return $this->db->update('users', $data);
         }
 

@@ -348,7 +348,7 @@
             // Pagination config
             $config['base_url'] = base_url() . 'manage_orders';
             $config['total_rows'] = $this->db->count_all('orders');
-            $config['per_page'] = 8;
+            $config['per_page'] = 10;
             $config['uri_segment'] = 3;
             $config['attributes'] = array('class' => 'pagination-links');
             $this->pagination->initialize($config);
@@ -361,6 +361,42 @@
             // Loading the views
             $this->load->view('templates/header',$url);
             $this->load->view('products/manage_orders', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function my_orders($offset = 0){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
+            // Pagination config
+            $config['base_url'] = base_url() . 'manage_orders';
+            $config['total_rows'] = $this->db->where('customer_id', $this->session->userdata("user_id"))->count_all_results('orders');
+            $config['per_page'] = 10;
+            $config['uri_segment'] = 3;
+            $config['attributes'] = array('class' => 'pagination-links');
+            $this->pagination->initialize($config);
+
+            // Defining the data for the views
+            $data['title'] = "My Orders History";
+            $url['url'] = "";
+            $data['orders'] = $this->product_model->get_orders($this->session->userdata("user_id"), $config['per_page'], $offset);
+
+            // Loading the views
+            $this->load->view('templates/header',$url);
+            $this->load->view('products/my_orders', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function view_order($id = NULL){
+            // Fetch order data from the database
+            $data['order'] = $this->product_model->getOrder($id);
+
+            // Load order details view
+            $url['url'] = "";
+            $this->load->view('templates/header', $url);
+            $this->load->view('products/view_order', $data);
             $this->load->view('templates/footer');
         }
 

@@ -9,6 +9,7 @@ $route['products/update'] = 'products/update';
 $route['products/(:any)'] = 'products/view/$1';
 $route['my_orders'] = 'products/my_orders';
 $route['manage_orders'] = 'products/manage_orders';
+$route['view_order/(:any)'] = 'products/view_order/$1';
 $route['products'] = 'products/index';
 
 $route['categories'] = 'categories/index';
@@ -27,6 +28,7 @@ $route['manage/staff'] = 'users/index';
 $route['staff/create'] = 'users/create_staff';
 $route['staff/update'] = 'users/update_staff';
 $route['my_profile'] = 'users/my_profile';
+$route['update_profile'] = 'users/update_profile';
 $route['change_password'] = 'users/change_password';
 
 $route['login'] = 'users/login';
