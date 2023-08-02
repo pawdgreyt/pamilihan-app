@@ -69,8 +69,11 @@
                 'name' => $this->input->post('name'),
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
+                'phone' => $this->input->post('phone'),
+                'address' => $this->input->post('address'),
                 'password' => $enc_password,
                 'role' => 'customer',
+                'status' => 'Active',
             );
 
             // Insert

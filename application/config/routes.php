@@ -15,6 +15,9 @@ $route['categories/products/(:any)'] = 'categories/products/$1';
 
 $route['carts/index'] = 'carts/index';
 
+$route['checkout/index'] = 'checkout/index';
+$route['checkout/order-success'] = 'checkout/order-success';
+
 $route['pages/home'] = 'pages/view';
 $route['pages/home/(:any)'] = 'pages/view';
 
