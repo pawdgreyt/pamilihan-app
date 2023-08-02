@@ -31,19 +31,19 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <?php if($this->session->userdata('logged_in')) : ?>
                                 <?php if($this->session->userdata('role') != "customer") { ?>
-                                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>"><i class="bi bi-basket"></i> Manage Orders</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>manage_orders"><i class="bi bi-basket"></i> Manage Orders</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url(); ?>products/manage"><i class="bi bi-cart4"></i> Manage Products</a></li>
                                     <?php if($this->session->userdata('role') == "admin") { ?>
                                         <li><a class="dropdown-item" href="<?php echo base_url(); ?>manage/staff"><i class="bi bi-people"></i> Manage Staff</a></li>
                                     <?php } ?>
                                     <li><hr class="dropdown-divider" style="color:gray"/></li>
                                 <?php } ?>
-                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>"><i class="bi bi-bag-check"></i> My Orders</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>my_profile"><i class="bi bi-person-badge"></i> My Profile</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url(); ?>my_orders"><i class="bi bi-bag-check"></i> My Orders</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>change_password"><i class="bi bi-unlock"></i> Change Password</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                             <?php elseif(!$this->session->userdata('logged_in')) : ?>
                             <li><a class="dropdown-item" href="<?php echo base_url(); ?>login"><i class="bi bi-box-arrow-right"></i> Login</a></li>
-                            <!-- <li><a class="dropdown-item" href="<?php echo base_url(); ?>register"><i class="bi bi-person-check"></i> Signup</a></li> -->
                             <?php endif; ?>
                         </ul>
                     </li>

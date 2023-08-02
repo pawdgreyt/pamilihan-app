@@ -37,7 +37,9 @@
                     <strong><?php echo 'Php '.number_format($this->cart->total(), 2); ?></strong>
                 </li>
             </ul>
-            <a href="<?php echo base_url('products/'); ?>" class="btn btn-block btn-outline-dark"><i class="bi bi-cart-plus-fill"></i> Add Items</a>
+            <center>
+                <a href="<?php echo base_url('products/'); ?>" class="btn btn-block btn-outline-dark"><i class="bi bi-cart-plus-fill"></i> Add Items</a>
+            </center>
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Contact Details</h4>
@@ -63,7 +65,10 @@
             </div>
             <?php echo form_open('checkout/index'); ?>
                 <br>
-                <input class="btn btn-outline-dark btn-lg btn-block" style="font-weight:550;" type="submit" name="placeOrder" value="Place Order">
+                <input type="hidden" name="placeOrder" value="Place Order">
+                <center>
+                    <button class="btn btn-outline-dark btn-lg btn-block" type="submit"><i class="bi bi-cart-check-fill"></i> Place Order</button>
+                </center>
             </form>
         </div>
     </div>

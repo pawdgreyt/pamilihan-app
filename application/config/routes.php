@@ -7,6 +7,8 @@ $route['products/manage'] = 'products/manage';
 $route['products/create'] = 'products/create';
 $route['products/update'] = 'products/update';
 $route['products/(:any)'] = 'products/view/$1';
+$route['my_orders'] = 'products/my_orders';
+$route['manage_orders'] = 'products/manage_orders';
 $route['products'] = 'products/index';
 
 $route['categories'] = 'categories/index';
@@ -24,6 +26,7 @@ $route['pages/home/(:any)'] = 'pages/view';
 $route['manage/staff'] = 'users/index';
 $route['staff/create'] = 'users/create_staff';
 $route['staff/update'] = 'users/update_staff';
+$route['my_profile'] = 'users/my_profile';
 $route['change_password'] = 'users/change_password';
 
 $route['login'] = 'users/login';
