@@ -37,7 +37,7 @@
 
             if ($id === FALSE) {
                 $this->db->order_by('o.id', "DESC");
-                $this->db->select('o.*, c.name, c.email, c.phone, c.address');
+                $this->db->select('o.*, c.name, c.email, c.phone, c.address, c.id as customer_id');
                 $this->db->from('orders as o');
                 $this->db->join('users as c', 'c.id = o.customer_id', 'left');
                 $query = $this->db->get();

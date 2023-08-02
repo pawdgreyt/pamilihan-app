@@ -390,8 +390,17 @@
         }
 
         public function view_order($id = NULL){
+            // check login
+            if(!$this->session->userdata('logged_in')){
+                redirect('login');
+            }
+
             // Fetch order data from the database
             $data['order'] = $this->product_model->getOrder($id);
+            
+            if ($this->session->userdata("role") == 'customer' AND $data['order']['customer_id'] != $this->session->userdata("user_id")) {
+                redirect();
+            }
 
             // Load order details view
             $url['url'] = "";

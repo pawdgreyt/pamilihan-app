@@ -9,7 +9,7 @@
     <div class="row col-lg-12 ord-addr-info">
         <p><b>Reference ID:</b> #<?php echo $order['id']; ?></p>
         <p><b>Total:</b> <?php echo 'Php'.number_format($order['grand_total'], 2); ?></p>
-        <p><b>Placed On:</b> <?php echo $order['created']; ?></p>
+        <p><b>Placed On:</b> <?php echo date("F d, Y H:i:s", strtotime($order['created'])); ?></p>
         <p><b>Buyer Name:</b> <?php echo $order['name']; ?></p>
         <p><b>Email:</b> <?php echo $order['email']; ?></p>
         <p><b>Phone:</b> <?php echo $order['phone']; ?></p>
