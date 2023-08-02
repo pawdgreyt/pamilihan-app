@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                 <h1 class="text-center mb-4"><?= $title; ?></h1>
@@ -25,6 +25,14 @@
                     <div class="mb-3">
                         <label for="password2" class="form-label">Confirm Password</label>
                         <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Phone</label>
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter Phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Address</label>
+                        <textarea name="address" class="form-control" cols="30" rows="5" placeholder="Enter Address"></textarea>
                     </div>
                     <center>
                         <button type="submit" class="btn btn-outline-dark btn-block"><i class="bi bi-person-check-fill"></i> Submit</button>

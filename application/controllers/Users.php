@@ -24,6 +24,9 @@
                         'user_id' => $user_details->id,
                         'username' => $username,
                         'name' => $user_details->name,
+                        'phone' => $user_details->phone,
+                        'email' => $user_details->email,
+                        'address' => $user_details->address,
                         'role' => $user_details->role,
                         'logged_in' => true
                     );
@@ -63,6 +66,8 @@
             $this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
+            $this->form_validation->set_rules('phone', 'Phone', 'required');
+            $this->form_validation->set_rules('address', 'Address', 'required');
             
 
             if ($this->form_validation->run() === FALSE) {
