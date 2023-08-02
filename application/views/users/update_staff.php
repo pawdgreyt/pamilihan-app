@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <h2><?= $title; ?></h2>
+    <h2><?= $title; ?>: <?= $staff['name'] ?></h2>
 
     <span style="color:red">
     <?php 
@@ -13,15 +13,15 @@
 <?php echo form_open('users/updatestaff'); ?>
     <input type="hidden" value="<?= $staff['id'] ?>" name="id">
     <div class="mb-3">
-        <label for="name" class="form-label">Fullname</label>
+        <label for="name" class="form-label">Full Name</label> <strong style="color:red">*</strong>
         <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name" value="<?= $staff['name'] ?>" autofocus>
     </div>
     <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label">Email</label> <strong style="color:red">*</strong>
         <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email" value="<?= $staff['email'] ?>">
     </div>
     <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
+        <label for="username" class="form-label">Username</label> <strong style="color:red">*</strong>
         <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" value="<?= $staff['username'] ?>">
     </div>
     <div class="mb-3">

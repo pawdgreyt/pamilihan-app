@@ -6,7 +6,7 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-3">
         <form id="filterForm" action="<?= base_url('products/index') ?>" method="GET">
-            <select name="product_category" class="form-control" required autocomplete="off">
+            <select name="product_category" class="form-control" required autocomplete="off" style="font-weight:550;">
                 <option value="All" <?= ($this->input->get('product_category') == 'All' || !$this->input->get('product_category')) ? 'selected' : '' ?>>Filter By Category: All</option>
                 <?php foreach ($categories as $category) : ?>
                     <option value="<?= $category['id'] ?>" <?= ($this->input->get('product_category') == $category['id']) ? 'selected' : '' ?>>Filter By Category: <?= $category['category'] ?></option>
