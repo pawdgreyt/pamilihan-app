@@ -7,10 +7,11 @@ $route['products/manage'] = 'products/manage';
 $route['products/create'] = 'products/create';
 $route['products/update'] = 'products/update';
 $route['products/(:any)'] = 'products/view/$1';
-$route['my_orders'] = 'products/my_orders';
-$route['manage_orders'] = 'products/manage_orders';
-$route['view_order/(:any)'] = 'products/view_order/$1';
 $route['products'] = 'products/index';
+
+$route['manage_orders'] = 'orders/manage_orders';
+$route['my_orders'] = 'orders/my_orders';
+$route['view_order/(:any)'] = 'orders/view_order/$1';
 
 $route['categories'] = 'categories/index';
 $route['categories/create'] = 'categories/create';
