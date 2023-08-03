@@ -1,6 +1,6 @@
 <?php if (!empty($order)) { ?>
     <div class="container mt-4">
-        <div class="card shadow-sm">
+        <div class="card shadow">
             <div class="card-header bg-light">
                 <h2 class="mb-0">Order Information</h2>
             </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="card mt-4">
+        <div class="card shadow mt-4">
             <div class="card-header bg-light">
                 <h3 class="mb-0">Order Items</h3>
             </div>
