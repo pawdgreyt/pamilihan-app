@@ -55,6 +55,8 @@
                     // Delete Cart in Database
                     $cart_details = $this->cart_model->cart_details_by_user_and_product_id($this->session->userdata('user_id'), $item['id']);
                     $this->cart_model->remove_item($cart_details['id']);
+
+                    // Todo Deduct the Order to the Inventory of Products
                     
                     $i++;
                 }

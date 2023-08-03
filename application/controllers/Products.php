@@ -385,7 +385,7 @@
 
             // Loading the views
             $this->load->view('templates/header',$url);
-            $this->load->view('products/my_orders', $data);
+            $this->load->view('orders/my_orders', $data);
             $this->load->view('templates/footer');
         }
 
@@ -405,7 +405,7 @@
             // Load order details view
             $url['url'] = "";
             $this->load->view('templates/header', $url);
-            $this->load->view('products/view_order', $data);
+            $this->load->view('orders/view_order', $data);
             $this->load->view('templates/footer');
         }
 
