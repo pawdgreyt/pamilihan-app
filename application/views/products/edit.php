@@ -1,5 +1,8 @@
 <br>
-<div class="row">
+<a href="<?php echo base_url(); ?>products/manage" class="btn btn-sm btn-outline-dark">
+    <i class="bi-arrow-left"></i> Back
+</a>
+<div class="row mt-2">
     <h2><?= $product['product_name']; ?></h2>
 
     <span style="color:red">
