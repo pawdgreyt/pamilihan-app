@@ -15,8 +15,9 @@
                         <th width="20%">NAME</th>
                         <th>PHONE</th>
                         <th>EMAIL</th>
-                        <th width="30%">DATE</th>
+                        <th width="20%">DATE</th>
                         <th>Total</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@
                                 ?>
                             </td>
                             <td><?= 'Php '.number_format($order['grand_total'], 2) ?></td>
+                            <td><?= ($order['status'] == 0) ? 'On Process' : 'Order Complete' ; ?></td>
                             <td>
                                 <center>
                                     <a href="<?php echo base_url(); ?>view_order/<?= $order['id'] ?>" type="button" class="btn btn-sm btn-outline-dark">
