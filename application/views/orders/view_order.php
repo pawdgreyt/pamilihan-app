@@ -9,6 +9,7 @@
                     <div class="col-md-6">
                         <p><strong>Reference ID:</strong> #<?php echo $order['id']; ?></p>
                         <p><strong>Total Price:</strong> <?php echo 'Php ' . number_format($order['grand_total'], 2); ?></p>
+                        <p><strong>Order Status:</strong> <?= ($order['status'] == 0) ? 'On Process' : 'Order Completed' ; ?></p>
                         <p><strong>Placed On:</strong> <?php echo date("F d, Y H:i:s", strtotime($order['created'])); ?></p>
                     </div>
                     <div class="col-md-6">

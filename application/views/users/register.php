@@ -34,6 +34,7 @@
                         <label for="username" class="form-label">Address</label>
                         <textarea name="address" class="form-control" cols="30" rows="5" placeholder="Enter Address"></textarea>
                     </div>
+                    <p class="text-center">Already registered? <a href="<?php echo base_url(); ?>login" style="color: black;">Login</a></p>
                     <center>
                         <button type="submit" class="btn btn-outline-dark btn-block"><i class="bi bi-person-check-fill"></i> Submit</button>
                     </center>
