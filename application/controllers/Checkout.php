@@ -79,7 +79,7 @@
         
         function orderSuccess($ordID){
             // Fetch order data from the database
-            $data['order'] = $this->product_model->getOrder($ordID);
+            $data['order'] = $this->order_model->getOrder($ordID);
 
             // Load order details view
             $url['url'] = "";
